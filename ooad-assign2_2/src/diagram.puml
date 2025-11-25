@@ -1,0 +1,109 @@
+
+
+@startuml
+skinparam classAttributeIconSize 0
+skinparam dpi 150
+
+' ========= 接口：Observer 模式 =========
+interface Subject<T> {
+    +registerObserver(observer : Observer<T>) : void
+    +removeObserver(observer : Observer<T>) : void
+    +notifyObservers(event : T) : void
+}
+
+interface Observer<T> {
+    +update(event : T) : void
+}
+
+' ========= 事件类 =========
+class SensorEvent {
+    -sensorType : String
+    -roomName   : String
+    -value      : double
+    --
+    +SensorEvent(sensorType : String, roomName : String, value : double)
+    +getSensorType() : String
+    +getRoomName()   : String
+    +getValue()      : double
+    +toString()      : String
+}
+
+' ========= 具体 Subject =========
+class MonitoringHub {
+    -observers : List<Observer<SensorEvent>>
+    --
+    +MonitoringHub()
+    +registerObserver(observer : Observer<SensorEvent>) : void
+    +removeObserver(observer : Observer<SensorEvent>) : void
+    +notifyObservers(event : SensorEvent) : void
+    +reportData(sensorType : String, roomName : String, value : double) : void
+}
+
+' ========= 具体 Observers =========
+class RealtimePanel {
+    -panelName : String
+    --
+    +RealtimePanel(panelName : String)
+    +update(event : SensorEvent) : void
+}
+
+class AlarmPanel {
+    -panelName      : String
+    -smokeThreshold : double
+    --
+    +AlarmPanel(panelName : String, smokeThreshold : double)
+    +update(event : SensorEvent) : void
+}
+
+' ========= Factory 接口与实现 =========
+interface RoomConfigFactory {
+    +setupPanels(hub : MonitoringHub, roomName : String) : void
+}
+
+class DormRoomFactory {
+    +DormRoomFactory()
+    +setupPanels(hub : MonitoringHub, roomName : String) : void
+}
+
+class LabRoomFactory {
+    +LabRoomFactory()
+    +setupPanels(hub : MonitoringHub, roomName : String) : void
+}
+
+class FactoryConfig {
+    +FactoryConfig()
+    +getFactory(roomType : String) : RoomConfigFactory
+}
+
+' ========= 主程序 =========
+class SmartHomeApp {
+    +SmartHomeApp()
+    +main(args : String[]) : void
+}
+
+' ========= 继承/实现关系 =========
+Subject <|.. MonitoringHub
+Observer <|.. RealtimePanel
+Observer <|.. AlarmPanel
+
+RoomConfigFactory <|.. DormRoomFactory
+RoomConfigFactory <|.. LabRoomFactory
+
+' ========= 关联关系 =========
+MonitoringHub "1" o-- "*" "observers" Observer : maintains
+
+MonitoringHub ..> SensorEvent : uses >
+RealtimePanel ..> SensorEvent : reads >
+AlarmPanel ..> SensorEvent   : checks smoke >
+
+DormRoomFactory ..> RealtimePanel : creates >
+DormRoomFactory ..> AlarmPanel    : creates >
+LabRoomFactory ..> RealtimePanel  : creates >
+LabRoomFactory ..> AlarmPanel     : creates >
+
+FactoryConfig ..> RoomConfigFactory : returns >
+SmartHomeApp ..> MonitoringHub      : creates >
+SmartHomeApp ..> FactoryConfig      : uses >
+SmartHomeApp ..> RoomConfigFactory  : uses >
+
+@enduml
