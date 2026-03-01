@@ -1,0 +1,468 @@
+/* ================================
+   全局透明（防止背景被覆盖）
+
+
+
+   ================================ */
+
+
+   html, body, #root {
+  background: radial-gradient(circle at center,
+      #0a0e1a,
+      #05070d 60%,
+      #000000 100%
+    ) !important;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+html, body {
+  background: transparent !important;
+}
+
+/* ================================
+   页面主容器
+================================ */
+.homepage-wrapper {
+  position: relative;
+  z-index: 10;
+  background: transparent !important;
+  overflow-x: hidden;
+}
+
+/* AntD Layout 强制透明 */
+.ant-layout,
+.ant-layout-content,
+.ant-layout-header {
+  background: transparent !important;
+}
+
+/* ================================
+   多层 Canvas（星空 / 流星 / 星云 / 粒子）
+================================ */
+#canvas-stars,
+#canvas-meteors,
+#canvas-nebula,
+#canvas-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none;
+}
+
+/* 星空层 */
+#canvas-stars { 
+  z-index: 0; 
+}
+
+/* 星云层（关键修复：降低模糊 + 降低透明度） */
+#canvas-nebula {
+  z-index: 1;
+  filter: blur(18px); /* ❗ 不要超过 25，否则整屏泛紫 */
+  opacity: 0.45;      /* ❗ 降低亮度防止覆盖星空 */
+}
+
+/* 流星层 */
+#canvas-meteors { 
+  z-index: 2; 
+}
+
+/* 粒子光点层 */
+#canvas-particles {
+  z-index: 3;
+  filter: blur(4px);
+}
+
+/* ================================
+   顶部导航栏
+================================ */
+.homepage-header {
+  height: 70px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 40px;
+  background: transparent !important;
+  z-index: 20;
+}
+
+.nav-btn {
+  font-size: 16px;
+  margin-left: 16px;
+  color: rgba(255,255,255,0.85) !important;
+  text-shadow: 0 0 10px rgba(180,200,255,0.7);
+}
+
+/* ================================
+   HERO 主视觉
+================================ */
+.homepage-content {
+  text-align: center;
+  color: white;
+  padding-top: 140px;
+  z-index: 20;
+}
+
+/* 超级标题 */
+.hero-title {
+  font-size: 64px !important;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow:
+    0 0 10px rgba(140,170,255,0.9),
+    0 0 25px rgba(100,140,255,0.8),
+    0 0 40px rgba(80,120,255,0.7),
+    0 0 60px rgba(80,120,255,0.6);
+}
+
+/* 副标题 */
+.hero-subtitle {
+  color: #dce2ff;
+  font-size: 20px;
+  text-shadow:
+    0 0 6px rgba(160,180,255,0.8),
+    0 0 14px rgba(100,130,255,0.5);
+}
+
+/* 主按钮 */
+.hero-buttons {
+  margin-top: 32px;
+}
+
+.hero-main-btn {
+  background: linear-gradient(135deg, #4c8eff, #3778ff) !important;
+  border: none !important;
+  color: #ffffff !important;
+
+  height: 56px !important;
+  padding: 0 40px !important;
+  font-size: 22px !important;
+  font-weight: 600;
+  border-radius: 18px !important;
+
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.9),
+    0 0 20px rgba(120,150,255,0.8);
+
+  box-shadow:
+    0 0 15px rgba(90,140,255,0.9),
+    0 0 35px rgba(90,140,255,0.7),
+    0 0 60px rgba(50,90,255,0.4);
+
+  transition: 0.3s ease-out;
+}
+
+.hero-main-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  filter: brightness(1.2);
+  box-shadow:
+    0 0 25px rgba(120,160,255,1),
+    0 0 65px rgba(100,140,255,0.8),
+    0 0 90px rgba(80,130,255,0.6);
+}
+
+/* ================================
+   三大核心功能卡片
+================================ */
+.feature-section {
+  margin-top: 90px;
+  padding: 0 60px;
+}
+
+.feature-card {
+  height: 210px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.07) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  backdrop-filter: blur(24px) saturate(150%);
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,0.45),
+    inset 0 0 18px rgba(255,255,255,0.05);
+
+  transition: 0.35s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  background: rgba(255,255,255,0.12) !important;
+
+  box-shadow:
+    0 12px 45px rgba(120,160,255,0.5),
+    inset 0 0 40px rgba(255,255,255,0.08);
+}
+
+.feature-card .ant-card-head-title {
+  color: white !important;
+  font-size: 18px;
+  text-shadow:
+    0 0 12px rgba(160,190,255,1),
+    0 0 25px rgba(120,150,255,0.8);
+}
+
+.feature-card p {
+  font-size: 15px;
+  color: #e4e8ff !important;
+  text-shadow:
+    0 0 8px rgba(180,200,255,0.6);
+}
+
+/* ================================
+   Section 标题
+================================ */
+.section-title {
+  margin-top: 120px;
+  margin-bottom: 40px;
+  font-size: 36px;
+  color: white;
+  text-align: center;
+
+  text-shadow:
+    0 0 16px rgba(140,170,255,1),
+    0 0 30px rgba(110,140,255,0.8);
+}
+
+/* ================================
+   AI 六大能力模块
+================================ */
+.ai-skill-card {
+  text-align: center;
+  padding: 28px 20px;
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(20px) saturate(150%);
+  transition: 0.35s ease;
+}
+
+.ai-skill-card:hover {
+  transform: translateY(-12px) scale(1.05);
+  background: rgba(255,255,255,0.13);
+
+  box-shadow:
+    0 12px 45px rgba(120,160,255,0.5),
+    inset 0 0 30px rgba(255,255,255,0.1);
+}
+
+.ai-skill-icon {
+  font-size: 48px;
+  margin-bottom: 14px;
+  text-shadow:
+    0 0 16px rgba(180,200,255,0.9),
+    0 0 30px rgba(100,130,255,0.8);
+}
+
+.ai-skill-title {
+  font-size: 22px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-shadow:
+    0 0 12px rgba(150,170,255,0.9);
+}
+
+.ai-skill-desc {
+  color: #e6e8ff;
+  text-shadow:
+    0 0 6px rgba(160,180,255,0.7);
+}
+
+/* ================================
+   大 Banner（学习路径）
+================================ */
+.big-banner {
+  margin-top: 100px;
+  padding: 90px 40px;
+  text-align: center;
+  border-radius: 22px;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(120,80,255,0.35),
+    rgba(30,10,80,0.12)
+  );
+
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,0.15);
+
+  box-shadow:
+    0 0 45px rgba(120,150,255,0.35),
+    inset 0 0 45px rgba(255,255,255,0.05);
+
+  animation: bannerPulse 6s infinite ease-in-out;
+}
+
+@keyframes bannerPulse {
+  0% { box-shadow: 0 0 45px rgba(120,150,255,0.3); }
+  50% { box-shadow: 0 0 70px rgba(150,180,255,0.5); }
+  100% { box-shadow: 0 0 45px rgba(120,150,255,0.3); }
+}
+
+.big-banner h2 {
+  font-size: 36px;
+  color: white;
+  text-shadow:
+    0 0 20px rgba(140,170,255,1),
+    0 0 40px rgba(120,150,255,0.8);
+}
+
+.big-banner p {
+  font-size: 18px;
+  color: #e2e4ff;
+  text-shadow:
+    0 0 10px rgba(150,170,255,0.8);
+}
+
+/* ================================
+   教材解析
+================================ */
+.step-card {
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(18px);
+
+  transition: 0.35s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-12px) scale(1.05);
+  background: rgba(255,255,255,0.12);
+
+  box-shadow:
+    0 12px 45px rgba(120,160,255,0.5),
+    inset 0 0 40px rgba(255,255,255,0.1);
+}
+
+.step-title {
+  font-size: 22px;
+  color: white;
+  text-shadow: 0 0 10px rgba(140,160,255,1);
+}
+
+.step-desc {
+  font-size: 16px;
+  margin-top: 12px;
+  color: #dde0ff;
+}
+
+/* ================================
+   学科模块
+================================ */
+.subject-card {
+  text-align: center;
+  padding: 25px;
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+
+  font-size: 22px;
+  color: white;
+
+  text-shadow:
+    0 0 12px rgba(150,170,255,1);
+
+  transition: 0.35s;
+}
+
+.subject-card:hover {
+  transform: translateY(-12px) scale(1.05);
+  background: rgba(255,255,255,0.2);
+
+  box-shadow:
+    0 0 40px rgba(120,140,255,0.5),
+    0 0 80px rgba(150,160,255,0.4);
+}
+
+/* ================================
+   用户评价卡片
+================================ */
+.testimonial-card {
+  padding: 30px;
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+
+  backdrop-filter: blur(20px);
+  transition: 0.35s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255,255,255,0.12);
+  box-shadow:
+    0 0 40px rgba(120,160,255,0.45);
+}
+
+.testimonial-text {
+  font-size: 18px;
+  color: #e8ecff;
+  text-shadow: 0 0 10px rgba(180,200,255,0.6);
+}
+
+.testimonial-name {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #d4d7ff;
+}
+
+/* ================================
+   CTA Banner（底部横幅）
+================================ */
+.cta-banner {
+  margin-top: 120px;
+  padding: 80px 40px;
+  border-radius: 26px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(80,120,255,0.25),
+    rgba(30,50,120,0.15)
+  );
+
+  backdrop-filter: blur(30px);
+  text-align: center;
+
+  box-shadow:
+    0 0 50px rgba(120,150,255,0.4),
+    inset 0 0 35px rgba(255,255,255,0.08);
+}
+
+.cta-banner h2 {
+  font-size: 34px;
+  color: white;
+
+  text-shadow:
+    0 0 16px rgba(150,170,255,1),
+    0 0 35px rgba(120,150,255,0.8);
+}
+
+.cta-btn {
+  margin-top: 24px;
+  height: 56px !important;
+  font-size: 20px !important;
+  padding: 0 40px !important;
+  border-radius: 16px !important;
+}
+
+/* ================================
+   页脚
+================================ */
+.footer {
+  margin-top: 120px;
+  padding: 40px;
+  text-align: center;
+  color: #cfd3ff;
+
+  text-shadow: 0 0 10px rgba(140,160,255,0.7);
+  background: transparent !important;
+}

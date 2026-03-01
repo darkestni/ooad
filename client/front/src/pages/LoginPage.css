@@ -1,0 +1,48 @@
+/* 全局 */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* 漂亮的渐变背景 */
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.login-card {
+  width: 400px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.95); 
+}
+
+/* 卡片标题*/
+.login-card .ant-card-head-title {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+/* 输入框样式  */
+.login-card .ant-input-affix-wrapper {
+  padding: 12px;
+  border-radius: 6px;
+}
+
+/* 登录按钮样式  */
+.login-form-button {
+  width: 100%;
+  height: 45px;
+  font-size: 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+/* --- 鼠标悬停在按钮上时*/
+.login-form-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,34 @@
+{
+  "auth": {
+    "type": "history",
+    "status": 200,
+    "token": "T-fake-login-token",
+    "content": [
+      {
+        "timestamp": "2025-01-01T10:00:00Z",
+        "role": "user",
+        "payload": [{ "text": "你好，测试历史消息" }]
+      },
+      {
+        "timestamp": "2025-01-01T10:00:02Z",
+        "role": "LLM",
+        "payload": { "text": "你好，我是 JSON-SERVER 的 AI" }
+      }
+    ]
+  },
+
+  "question": {
+    "success": true,
+    "content": { "text": "这是 JSON-SERVER 模拟的回答" }
+  },
+
+  "upload-textbook": {
+    "success": true,
+    "msg": "模拟上传成功"
+  },
+
+  "delete-textbook": {
+    "success": true,
+    "msg": "模拟删除成功"
+  }
+}

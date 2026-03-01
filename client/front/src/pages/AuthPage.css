@@ -1,0 +1,133 @@
+/* =========================================================
+   星空主题登录 & 注册页面（与 HomePage 风格完全一致）
+   ========================================================= */
+
+/* 页面容器：透明 + 全屏居中 */
+.auth-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent !important;
+}
+
+/* ========= 星空背景（复用 HomePage 的 4 层 Canvas） ========= */
+
+#auth-stars,
+#auth-meteors,
+#auth-nebula,
+#auth-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none;
+}
+
+#auth-stars { z-index: 0; }
+#auth-nebula { z-index: 1; filter: blur(18px); opacity: 0.45; }
+#auth-meteors { z-index: 2; }
+#auth-particles { z-index: 3; filter: blur(4px); }
+
+/* ========= 登录/注册卡片 ========= */
+
+.glass-card {
+  position: relative;
+  z-index: 10;
+
+  width: 400px;
+  padding: 40px 36px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(18px) saturate(160%);
+  box-shadow:
+    0 8px 28px rgba(0,0,0,0.25),
+    inset 0 0 18px rgba(255,255,255,0.05);
+
+  animation: fadeInUp 0.7s ease-out;
+  color: white;
+}
+
+@keyframes fadeInUp {
+  0% { opacity:0; transform: translateY(30px); }
+  100% { opacity:1; transform: translateY(0); }
+}
+
+/* ========= 标题 ========= */
+
+.auth-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  text-shadow:
+    0 0 8px rgba(150,170,255,0.8),
+    0 0 20px rgba(120,140,255,0.6);
+}
+
+.auth-subtitle {
+  margin-top: 4px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: #e4e8ff;
+  text-shadow: 0 0 8px rgba(150,170,255,0.7);
+}
+
+/* ========= 输入框 ========= */
+
+.auth-input {
+  margin-bottom: 18px;
+  background: rgba(255,255,255,0.75) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  border: 1px solid rgba(255,255,255,0.3) !important;
+}
+
+/* ========= 登录/注册按钮 ========= */
+
+.auth-button {
+  margin-top: 6px;
+  width: 100%;
+  height: 48px;
+  border-radius: 12px !important;
+  border: none;
+
+  font-size: 17px;
+  font-weight: 600;
+  color: white !important;
+
+  background: linear-gradient(135deg, #4c8eff, #3778ff) !important;
+  box-shadow:
+    0 0 15px rgba(90,140,255,0.8),
+    0 0 35px rgba(90,140,255,0.6);
+
+  transition: all 0.25s ease-out;
+}
+
+.auth-button:hover {
+  transform: translateY(-4px) scale(1.05);
+  filter: brightness(1.15);
+  box-shadow:
+    0 0 25px rgba(120,160,255,1),
+    0 0 55px rgba(100,130,255,0.7);
+}
+
+/* ========= 底部文字 ========= */
+
+.auth-footer {
+  margin-top: 18px;
+  font-size: 15px;
+  color: #dce1ff;
+  text-shadow: 0 0 8px rgba(140,160,255,0.7);
+}
+
+.auth-footer a {
+  color: #8ab4ff;
+  text-shadow: 0 0 10px rgba(140,160,255,0.9);
+}

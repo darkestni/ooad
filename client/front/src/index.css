@@ -1,0 +1,41 @@
+/* 全局字体 */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background: transparent !important;
+  color: #000000;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.dark-mode {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+.dark-mode .ant-layout,
+.dark-mode .ant-layout-content {
+  background: #000000 !important;
+}
+
+/* ⭐ 去除 AntD 默认白底 */
+.ant-layout,
+.ant-layout-content,
+.ant-layout-header {
+  background: transparent !important;
+}
+
+/* ⭐⭐ 最关键：把 root/App 全局容器设置为透明 ⭐⭐ */
+#root,
+html,
+.App {
+  background: transparent !important;
+}

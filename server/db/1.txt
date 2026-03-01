@@ -1,0 +1,20 @@
+table token{
+token:string
+TTL:time
+username:string
+}
+users{
+username
+password:string
+}
+history{
+username
+timestamp
+payload
+role
+}
+textbook{
+username
+file_id
+chunk
+}

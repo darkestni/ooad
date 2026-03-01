@@ -1,0 +1,17 @@
+/* Light */
+.light .sidebar-container {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(200,220,255,0.6);
+  border-radius: 14px;
+  color: #1a2d4c;
+}
+
+/* Cosmic */
+.cosmic .sidebar-container {
+  background: rgba(10,10,20,0.70);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  color: white;
+}

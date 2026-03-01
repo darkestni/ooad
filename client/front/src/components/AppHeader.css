@@ -1,0 +1,76 @@
+/******************************************************
+ * AppHeader.css — 自动主题切换版
+ ******************************************************/
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 28px;
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  z-index: 999;
+}
+
+/* 统一标题样式 */
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+/* ======================================
+   🌞 Light 模式下的标题（深色文字）
+====================================== */
+.chat-page.light .title {
+  color: #253041; /* 温和深蓝灰 */
+}
+
+/* ======================================
+   🌌 Cosmic 模式下的标题（霓虹渐变）
+====================================== */
+.chat-page.cosmic .title {
+  background: linear-gradient(
+    120deg,
+    #8be9ff,
+    #8293ff,
+    #c69bff
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow:
+    0 0 6px rgba(150, 180, 255, 0.35),
+    0 0 12px rgba(130, 150, 255, 0.25);
+}
+
+/* 右侧按钮区 */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* 登出按钮 */
+.logout-btn {
+  background: linear-gradient(135deg, #7d91ff, #a889ff);
+  border: none;
+  padding: 4px 16px;
+  color: white;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #95a6ff, #b797ff);
+  color: #fff;
+}
