@@ -41,3 +41,6 @@ modules.xml
 misc.xml
 vcs.xml
 inspectionProfiles/
+
+# 重复的子目录
+information/
